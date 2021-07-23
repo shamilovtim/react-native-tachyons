@@ -24,10 +24,10 @@ export const getterFactory = state => tachyonText => {
       style = getColorStyle(tachyon);
     } else {
       style = state.styles[key];
-      invariant(
-        style,
-        `Unknown style key: ${key}. Check your spelling. If this is a custom style be sure to build it.`
-      );
+      if (!style) {
+        console.warn(`Unknown style key: ${key}. Check your spelling. If this is a custom style be sure to build it.`)
+        return arr
+      }
     }
 
     return [...arr, style];

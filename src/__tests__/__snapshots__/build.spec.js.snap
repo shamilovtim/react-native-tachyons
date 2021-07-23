@@ -24,6 +24,9 @@ Object {
   "aifs": Object {
     "alignItems": "flex-start",
   },
+  "ais": Object {
+    "alignItems": "stretch",
+  },
   "aliceblue": Object {
     "color": "#f0f8ff",
   },
@@ -1223,6 +1226,9 @@ Object {
   },
   "flx-b-9": Object {
     "flexBasis": 256,
+  },
+  "flx-col": Object {
+    "flexDirection": "col",
   },
   "flx-col-reverse": Object {
     "flexDirection": "column-reverse",
