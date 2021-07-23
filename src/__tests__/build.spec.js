@@ -11,6 +11,7 @@ const getStyler = (config = defaultConfig) => {
 };
 
 test('style getter', () => {
+  var warn = jest.spyOn(global.console, 'warn');
   const styler = getStyler();
 
   expect(styler('blue jcc flx-i ma5')).toEqual([
@@ -20,9 +21,14 @@ test('style getter', () => {
     { margin: 20 }
   ]);
 
-  expect(() => styler('owen-is-a-noob')).toThrowError(
-    'Unknown style key: owen-is-a-noob. Check your spelling. If this is a custom style be sure to build it.'
-  );
+  expect(warn.mock.calls).toEqual([])
+
+  expect(styler('owen-is-a-noob')).toEqual([]);
+
+  expect(warn.mock.calls).toEqual([['Unknown style key: owen-is-a-noob. Check your spelling. If this is a custom style be sure to build it.']])
+
+  warn.mockReset();
+  warn.mockRestore();
 });
 
 test('default styles', () => {
